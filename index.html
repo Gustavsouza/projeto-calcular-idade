@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styly.css">
+    <title>idade</title>
+</head>
+<body>
+    <header>
+        <h1>Verificador de idade</h1>
+    </header>
+    <section>
+        <!-- Conteudo-->
+        <div>
+            <!-- 1 -->
+            <p>
+                Ano de Nascimento: <input type="number" name="idade" id="idade">
+            </p>
+            <p>
+                Sexo: 
+                <input type="radio" name="radsex" id="mas" checked>
+                <label for="mas">Masculino</label>
+                <input type="radio" name="radsex" id="fem">
+                <label for="fem">Feminino</label>
+            </p>
+                <div id="btn">
+                    <input id="bot" type="button" value="Verificar" onclick="calcular()">
+                </div>
+        </div>
+        <div>
+            <!-- 2 -->
+            <p id="msg"> Preencha os dados acima para ver o resultado!</p>
+        </div>
+
+    </section>
+    <footer>
+        <p> &copy; Gustavo Dev </p>
+    </footer>
+    <!-- Aqui vemos como criar um script externo-->
+    <script>
+        function calcular(){
+            var ano = document.getElementById('idade').value
+            var msg = document.querySelector('p#msg')
+            var dat = new Date() 
+            var datano = dat.getFullYear();
+            var idade = datano - ano
+            //inserindo elemento html pelo javascript
+            var img = document.createElement('img')
+            img.setAttribute('id','foto') 
+            // Essa parte aqui vamos ter que ver com o Guanaraba, como ele fez
+            if( ano.length == 0 || ano > datano){
+                alert("Tem parada errada ai mermão.")
+            }else{
+                var fsex = document.getElementsByName('radsex')
+                var genero = ''
+                if(fsex[0].checked){
+                    genero = 'Homem'
+                    //if para ver a faixa etária
+                    if(idade >= 0  && idade <= 21 ){
+                        //Homem masculino
+                        img.setAttribute('src','fotos/jovem.png')
+                    }else if( idade < 50 ){
+                        //homem meia idade
+                        img.setAttribute('src','fotos/meiaidade.png')
+                    }else if(idade > 51){
+                        //Homem idoso
+                        img.setAttribute('src','fotos/idoso.png')
+                    }
+                }else if(fsex[1].checked){
+                    genero = 'Mulher'
+                    // if para ver a faixa etária
+                    if(idade >= 0  && idade <= 21 ){
+                        //jovem mulher
+                        img.setAttribute('src','fotos/mjovem.png')
+                    }else if( idade < 50 ){
+                        //mulher meia idade
+                        img.setAttribute('src','fotos/mulhermeiaidade.png')
+                    }else if(idade > 51){
+                        //mulher idosa
+                        img.setAttribute('src','fotos/idosa.png')
+                    }
+                }
+                msg.innerHTML = `Detectamos ${genero} com ${idade} anos` 
+                msg.appendChild(img)
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
