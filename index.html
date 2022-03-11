@@ -63,9 +63,13 @@
                     }else if( idade < 50 ){
                         //homem meia idade
                         img.setAttribute('src','fotos/meiaidade.png')
-                    }else if(idade > 51){
+                    }else if(idade > 51 && idade <= 99){
                         //Homem idoso
                         img.setAttribute('src','fotos/idoso.png')
+                    }else if(idade > 100){
+                        //Homem idoso
+                        img.setAttribute('src', 'fotos/terror.png')
+                        msg.innerHTML = (`<p style='color:red; background-color:black;'> <strong>Famoso Terror do INSS </strong> </p>`)
                     }
                 }else if(fsex[1].checked){
                     genero = 'Mulher'
@@ -81,7 +85,7 @@
                         img.setAttribute('src','fotos/idosa.png')
                     }
                 }
-                msg.innerHTML = `Detectamos ${genero} com ${idade} anos` 
+                msg.innerHTML += `Detectamos ${genero} com ${idade} anos` 
                 msg.appendChild(img)
             }
         }
