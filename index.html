@@ -49,6 +49,11 @@
             var img = document.createElement('img')
             img.setAttribute('id','foto') 
             // Essa parte aqui vamos ter que ver com o Guanaraba, como ele fez
+
+            if(idade > 230){
+                alert("Impossivel estar vivo")
+            }else{
+
             if( ano.length == 0 || ano > datano){
                 alert("Tem parada errada ai mermão.")
             }else{
@@ -66,8 +71,8 @@
                     }else if(idade > 51 && idade <= 99){
                         //Homem idoso
                         img.setAttribute('src','fotos/idoso.png')
-                    }else if(idade > 100){
-                        //Homem idoso
+                    }else if(idade > 100 && idade < 140 ){
+                        //Homem idoso pra caramba
                         img.setAttribute('src', 'fotos/terror.png')
                         msg.innerHTML = (`<p style='color:red; background-color:black;'> <strong>Famoso Terror do INSS </strong> </p>`)
                     }
@@ -89,7 +94,7 @@
                 msg.appendChild(img)
             }
         }
-
+    }
     </script>
     
 </body>
